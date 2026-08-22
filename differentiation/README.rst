@@ -10,11 +10,10 @@ For a first example, we'll address the differential equation:
    \[y' + 2y = 2 - e^{-4t}\]
 
 With a solution of:
-.. math::
-   :name: Differential Equation 1 Solution
-   \[y(0) = 1\]
+
+:math: `\[y(0) = 1\]`
 
 |euler-1|
 
-.. |euler-1| image:: https://...
+.. |euler-1| image:: https://github.com/mirelurk/numerical-methods/differentiation/images/euler1.svg
    :alt: A 3D rendering from gnuplot of 
