@@ -38,7 +38,7 @@ int main()
 
 	FILE *stream;
 	stream = fopen("output.txt", "w");
-	fprintf(stream, "step\ttime\tvalue\n");
+	fprintf(stream, "time\tvalue\n");
 
 	int count = 0;
 	double y, t, m, ynew, tnew;
@@ -51,7 +51,7 @@ int main()
 		m = f(y, t);
 		ynew = y + (m*stepsize);
 		tnew = t + stepsize;
-		fprintf(stream, "%d\t%lf\t%lf\n", count, tnew, ynew);
+		fprintf(stream, "%lf\t%lf\n", tnew, ynew);
 
 		count++;
 		y = ynew;
