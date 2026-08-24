@@ -5,22 +5,12 @@
 #define MAX 100
 #define e 2.718281828459045
 
-/* Euler's Method For Solving Ordinary Differential Equations
- * Enter your formula on the return line of the function f below.
- * At runtime, program prompts user for the total steps, step size
- * and initial value.
- * Max iterations are defined by MAX above.
- * Output written to output.txt with the following format:
- * iteration_count	time	approximation
- * 
+/* Runge-Kutta Method
  */
 
 double f(double x, double t)
 {
-	//Portfolio Example 1
 	return 2 - pow(e, (-4*t)) - (2*x);
-
-	//Portfolio Example 2
 }
 
 int main()
