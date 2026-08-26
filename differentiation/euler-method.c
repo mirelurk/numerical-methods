@@ -21,6 +21,7 @@ double f(double x, double t)
 	return 2 - pow(e, (-4*t)) - (2*x);
 
 	//Portfolio Example 2
+	
 }
 
 int main()

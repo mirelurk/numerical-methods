@@ -6,11 +6,12 @@
 #define e 2.718281828459045
 
 /* Runge-Kutta Method
+*
  */
 
-double f(double x, double t)
+double f(double x, double y)
 {
-	return 2 - pow(e, (-4*t)) - (2*x);
+	return 2 - pow(e, (-4*y)) - (2*x);
 }
 
 int main()
@@ -34,21 +35,23 @@ int main()
 	fprintf(stream, "time\tvalue\n");
 
 	int count = 0;
-	double y, t, m, ynew, tnew;
+	double x, xh, y, yh, k1, k2;
 
-	t = 0;
+	x = 0;
 	y = y0;
 
 	while(count < steps)
 	{
-		m = f(y, t);
-		ynew = y + (m*stepsize);
-		tnew = t + stepsize;
-		fprintf(stream, "%lf\t%lf\n", tnew, ynew);
+		k1 = stepsize * f(x,y);
+		xh = x + (stepsize/2);
+		yh = y + (k1/2);
+		k2 = stepsize * f(xh, yh);
 
-		count++;
+		ynew = y + k2 + O(stepsize^3); //Need to create error function O
+		xnew = x + stepsize;
 		y = ynew;
-		t = tnew;	
+		x = xnew;
+		count++;
 	}
 
 	fclose(stream);
