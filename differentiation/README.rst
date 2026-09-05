@@ -15,5 +15,5 @@ With a solution of:
 
 |euler-1|
 
-.. |euler-1| image:: https://github.com/mirelurk/numerical-methods/differentiation/images/euler1.svg
+.. |euler-1| image:: github.com/mirelurk/numerical-methods/blob/differentiation/images/euler1.svg
    :alt: A 3D rendering from gnuplot of 
