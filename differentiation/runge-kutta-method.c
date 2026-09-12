@@ -8,47 +8,48 @@
 /* Runge-Kutta Method
  */
 
-double f(double x, double t)
+double f(double x, double y)
 {
-	return 2 - pow(e, (-4*t)) - (2*x);
+	return 2 - pow(e, (-4*y)) - (2*x);
 }
 
 int main()
 {
-
 	int steps;
-	double stepsize;
 	double y0;
 
-	printf("Enter total steps: "); //Error loop if int not entered or if step > MAX
+	printf("Enter total number of steps to process: "); //To do: Error loop if int not received 
 	scanf("%d", &steps);
 
-	printf("Enter step size: "); //Error loop if double not entered
-	scanf("%lf", &stepsize);
-
-	printf("Enter initial value: "); //Error loop if double not entered
+	printf("Enter initial value: "); //To do: Error loop if double not entered
 	scanf("%lf", &y0);
 
 	FILE *stream;
 	stream = fopen("output.txt", "w");
 	fprintf(stream, "time\tvalue\n");
 
+	double h = 0.0005; //Stepsize
 	int count = 0;
-	double y, t, m, ynew, tnew;
+	double x, xnew, y, ynew, k1, k2, k3, k4; 
 
-	t = 0;
+	x = 0;
 	y = y0;
 
 	while(count < steps)
 	{
-		m = f(y, t);
-		ynew = y + (m*stepsize);
-		tnew = t + stepsize;
-		fprintf(stream, "%lf\t%lf\n", tnew, ynew);
+		k1 = h*f(x, y);
+		k2 = h*f((x+(h/2)), (y+(k1/2)));
+		k3 = h*f((x+(h/2)), (y+(k2/2)));
+		k4 = h*f((x+h), (y+k3));
+
+		xnew = x + h;
+		ynew = y + (k1/6) + (k2/3) + (k3/3) + (k4/6);
+
+		fprintf(stream, "%lf\t%lf\n", xnew, ynew);
 
 		count++;
+		x = xnew;
 		y = ynew;
-		t = tnew;	
 	}
 
 	fclose(stream);
