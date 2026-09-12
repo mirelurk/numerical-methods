@@ -20,7 +20,12 @@ double f(double x, double t)
 	//Portfolio Example 1
 	return 2 - pow(e, (-4*t)) - (2*x);
 
+<<<<<<< HEAD
 	//Portfolio Example
+=======
+	//Portfolio Example 2
+	
+>>>>>>> refs/remotes/origin/basic-differentiation
 }
 
 int main()
